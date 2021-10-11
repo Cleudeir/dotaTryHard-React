@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import RequestApi from './RequestApi';
 
-function App() {
+const App =  ()=> {
+  const [date, setDate] = useState('');
+  const [idDota,setIdDota] = useState(87683422)
+
+  const input =(e)=>{
+    const {value}  = e.target
+    setIdDota(value)
+  }
+  const button=async()=>{
+    let dateSearch = await RequestApi({idDota})
+    console.log(dateSearch)
+    setDate(dateSearch)
+  }
+  useEffect(() => {
+   
+    
+  },[]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type='text' onChange={input} placeholder='Nick Name'/>
+      <button onClick={button} type='button'>Buscar</button>
+    </div>
+    <div className='result'>
+      <p></p>
+    </div>
     </div>
   );
 }
