@@ -1,17 +1,16 @@
-import './App.css';
+import './Css/App.css';
 import React, { useState, useEffect } from 'react';
-import RequestApi from './RequestApi';
-
+import IdConverter from './RequestApi/IdConverter';
+import RequestApi from './RequestApi'
 const App =  ()=> {
-  const [date, setDate] = useState('');
-  const [idDota,setIdDota] = useState(87683422)
+  const [date, setDate] = useState(false);
 
   const input =(e)=>{
     const {value}  = e.target
-    setIdDota(value)
+
   }
   const button=async()=>{
-    let dateSearch = await RequestApi({idDota})
+    let dateSearch = await RequestApi()
     console.log(dateSearch)
     setDate(dateSearch)
   }
@@ -19,7 +18,7 @@ const App =  ()=> {
    
     
   },[]);
-
+ 
   return (
     <div className="App">
     <div>
@@ -27,7 +26,17 @@ const App =  ()=> {
       <button onClick={button} type='button'>Buscar</button>
     </div>
     <div className='result'>
-      <p></p>
+     {date && 
+      date.map((x,i) => {
+        return(
+        <div>
+        <img src={x.avatarfull} alt={x.personaname+i} width='94'/>
+        <h2>{x.personaname}-{x.loccountrycode}</h2>
+        </div> 
+         )
+      })
+       }
+    
     </div>
     </div>
   );

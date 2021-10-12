@@ -1,93 +1,23 @@
-package dota
-
-type GameMode struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-}
-
-var GameModes = []GameMode{
-	GameMode{
-		ID:   0,
-		Name: "No Game Mode",
-	},
-	GameMode{
-		ID:   1,
-		Name: "All Pick",
-	},
-	GameMode{
-		ID:   2,
-		Name: "Captain's Mode",
-	},
-	GameMode{
-		ID:   3,
-		Name: "Random Draft",
-	},
-	GameMode{
-		ID:   4,
-		Name: "Single Draft",
-	},
-	GameMode{
-		ID:   5,
-		Name: "All Random",
-	},
-	GameMode{
-		ID:   7,
-		Name: "Diretide",
-	},
-	GameMode{
-		ID:   8,
-		Name: "Reverse Captain's Mode",
-	},
-	GameMode{
-		ID:   9,
-		Name: "Greeviling",
-	},
-	GameMode{
-		ID:   10,
-		Name: "Tutorial",
-	},
-	GameMode{
-		ID:   11,
-		Name: "Mid Only",
-	},
-	GameMode{
-		ID:   12,
-		Name: "Least Played",
-	},
-	GameMode{
-		ID:   13,
-		Name: "New Player Pool",
-	},
-	GameMode{
-		ID:   14,
-		Name: "Compendium Matchmaking",
-	},
-	GameMode{
-		ID:   15,
-		Name: "Custom",
-	},
-	GameMode{
-		ID:   16,
-		Name: "Captain's Draft",
-	},
-	GameMode{
-		ID:   17,
-		Name: "Balanced Draft",
-	},
-	GameMode{
-		ID:   18,
-		Name: "Ability Draft",
-	},
-	GameMode{
-		ID:   20,
-		Name: "All Random Deathmatch",
-	},
-	GameMode{
-		ID:   21,
-		Name: "Solo Mid 1v1",
-	},
-	GameMode{
-		ID:   22,
-		Name: "Ranked All Pick",
-	},
-}
+ /*
+            const GetPlayerSummaries = await fetch(`${proxy}${hostUrl}/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${idUser}&`)
+            .then((response)=>{return  response.json()})
+            .then((data)=>{return(data.response.players[0])})
+            .catch((error)=>{console.log(error.message);return(false)})
+            
+            const GetFriendList = await fetch(`${proxy}${hostUrl}/ISteamUser/GetFriendList/v0001/?key=${apiKey}&steamid=${idUser}&relationship=friend`)
+            .then((response)=>{return  response.json()})
+            .then((data)=>{return(data.friendslist.friends)})
+            .catch((error)=>{console.log(error.message);return(false)})
+            */
+             /*
+            let matchHistoryDetail = []
+            for(let i=0; i<10;i++){
+                let id = matchHistory[i].match_id                   
+                console.log(id)                                   
+                let x = fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchDetails/v1?key=${apiKey}&match_id=${id}`)
+                .then((response)=>{return  response.json()})
+                .then((data)=>{console.log(data.result) ;return(data.result)})
+                .catch((error)=>{console.log(error.message);return(false)})
+                matchHistoryDetail.push(await x)
+            }
+            */
