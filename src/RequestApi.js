@@ -1,5 +1,5 @@
 import {PlayersId} from './Results/PlayersId'
-import SearchSumaryPlayersAD from './RequestApi/SearchSumaryPlayersAD'
+import Winrate from './RequestApi/Winrate'
 const RequestApi= async ()=>{
     const apiKey = '048776627077105958873BA4C749CEFF'
     const hostUrl = 'http://api.steampowered.com'
@@ -9,9 +9,10 @@ const RequestApi= async ()=>{
     const gameMode = 18
     const idGame = '570'
 
-    let playersOnline = SearchSumaryPlayersAD({idGame,proxy,hostUrl,apiKey,PlayersId})
+   Winrate({PlayersId,apiKey,hostUrl,proxy,gameMode})
 
-        return(playersOnline)
+    console.log()
+        return('')
     }
     export default RequestApi;
     

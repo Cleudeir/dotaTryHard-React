@@ -11,7 +11,6 @@ const App =  ()=> {
   }
   const button=async()=>{
     let dateSearch = await RequestApi()
-    console.log(dateSearch)
     setDate(dateSearch)
   }
   useEffect(() => {

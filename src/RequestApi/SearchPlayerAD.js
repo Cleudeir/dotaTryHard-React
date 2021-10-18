@@ -1,9 +1,11 @@
 const SearchPlayerAD = ()=>{
+
     const search = async ()=>{
         let playerAdArry = []
         let playerAdSet = new Set()
         let playerAdUnicos = []
         let PlayerOrder = []
+        
         for(let i=0;i<idSteam.length;i++){
             
             let a = await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchHistory/v1/?account_id=${idSteam[i]}&game_mode=${gameMode}&key=${apiKey}`)
