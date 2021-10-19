@@ -65,7 +65,7 @@ const App =  ()=> {
         {delay &&
           <div style={{margin: '80px 0px',height:'50vh'}}>
           <h3>Aguarde pode demorar...</h3>
-          <img src='https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif'/>
+          <img src='https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif' alt='a'/>
           </div>
         }
         </div>

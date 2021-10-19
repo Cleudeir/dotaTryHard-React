@@ -1,5 +1,5 @@
 const Winrate = async  ({value,apiKey,hostUrl,proxy,gameMode})=>{
-    console.log('Winrate')
+    console.log('Winrate',value)
     const search = async ()=>{
         let obj = {
             win_rate : 0,
@@ -17,15 +17,16 @@ const Winrate = async  ({value,apiKey,hostUrl,proxy,gameMode})=>{
             media_assists : 0,
         }   
         for(let i=0;i<1;i++){
-            let search_History = await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchHistory/v1?account_id=${value}&game_mode=${gameMode}&key=${apiKey}`)
+            let search_History = await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchHistory/v1?account_id=${value}&game_mode=${gameMode}&key=${apiKey}`)           
             .then((response)=>{return  response.json()})
             .then((data)=>{
+                console.log('search_History')
                 let x = data.result.matches
                 let z = []
                 for(let j=0;j<x.length;j++){
-                    console.log('History')
+                    
                     let {match_id,players} = data.result.matches[j]
-                    let y = players.filter(x => x.account_id == value)[0]
+                    let y = players.filter(x => x.account_id === value)[0]
                     let {player_slot} = y
                     z.push({match_id,player_slot})
                 }
@@ -34,15 +35,18 @@ const Winrate = async  ({value,apiKey,hostUrl,proxy,gameMode})=>{
             .catch((error)=>{console.log(error.message);return undefined});
             
             
-            for(let k=0;k<100;k++){ 
-                let b = await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchDetails/v1?match_id=${search_History[k].match_id}&key=${apiKey}`)
+            
+            for(let k=0;k<1;k++){ 
+                await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchDetails/v1?match_id=${search_History[k].match_id}&key=${apiKey}`)
+                
                 .then((response)=>{return  response.json()})
                 .then((data)=>{
+                    console.log('search_Match')
                     let {radiant_win,players} = data.result                     
-                    let y = players.filter(x => x.account_id == value)[0]
+                    let y = players.filter(x => x.account_id === value)[0]
                     
                     let {assists,gold_per_min,xp_per_min,kills,deaths,last_hits,denies,hero_damage,hero_healing,net_worth,tower_damage} = y
-                    console.log('obj')
+                    
                     obj.media_assists += assists/100
                     obj.media_gpm += gold_per_min/100
                     obj.media_xpm += xp_per_min/100
@@ -64,19 +68,19 @@ const Winrate = async  ({value,apiKey,hostUrl,proxy,gameMode})=>{
             
             Object.keys(obj).forEach((key) => {
                 if(key!== 'winrate' && key !== obj.ranking_rate){
-                    if(key == 'media_assists'){
+                    if(key === 'media_assists'){
                         obj.ranking_rate += obj[key]*100*5
                     }
-                    else if(key == 'media_kills'){
+                    else if(key === 'media_kills'){
                         obj.ranking_rate += obj[key]*100
                     }
-                    else if(key == 'media_deaths'){
+                    else if(key === 'media_deaths'){
                         obj.ranking_rate += obj[key]*100*0.5 
                     }
-                    else if(key == 'media_hero_damage'){
+                    else if(key === 'media_hero_damage'){
                         obj.ranking_rate += obj[key]/10 
                     }
-                    else if(key == 'media_net_worth'){
+                    else if(key === 'media_net_worth'){
                         obj.ranking_rate += obj[key]/10 
                     }
                     else{
@@ -101,7 +105,7 @@ const Winrate = async  ({value,apiKey,hostUrl,proxy,gameMode})=>{
             
         }
         return (obj)
-    }  
+    }
     const compilation  = await search()
     const result = await compilation
     return(result)
