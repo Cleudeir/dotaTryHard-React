@@ -1,20 +1,14 @@
-import {PlayersId} from './Results/PlayersId'
 import Winrate from './RequestApi/Winrate'
-const RequestApi= async ()=>{
+import SearchSumaryPlayer from './RequestApi/SearchSumaryPlayers'
+const RequestApi= async ({value})=>{
     const apiKey = '048776627077105958873BA4C749CEFF'
     const hostUrl = 'http://api.steampowered.com'
-    
     //const proxy = 'https://cors-anywhere.herokuapp.com/'
     const proxy = 'https://thingproxy.freeboard.io/fetch/'
     const gameMode = 18
-    const idGame = '570'
-
-   Winrate({PlayersId,apiKey,hostUrl,proxy,gameMode})
-
-    console.log()
-        return('')
-    }
-    export default RequestApi;
     
-    
-    
+    let win = await Winrate({value,apiKey,hostUrl,proxy,gameMode})
+    let player = await SearchSumaryPlayer({value,apiKey,hostUrl,proxy,gameMode})
+    return({win,player})
+}
+export default RequestApi;
