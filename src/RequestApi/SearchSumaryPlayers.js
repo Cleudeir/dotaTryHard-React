@@ -4,12 +4,9 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy})=>{
     
     const IdConverter = async()=>{
         let id = new SteamID(`[U:1:${value}]`);
-        console.log(id)
         return(id)
     }
     let accountid = await IdConverter()
-
-    console.log(accountid)
     const search = async ()=>{        
         let a = await fetch(`${proxy}${hostUrl}/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${accountid}`)
         .then((response)=>{return  response.json()})

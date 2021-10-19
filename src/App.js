@@ -14,12 +14,12 @@ const App =  ()=> {
     const button = async()=>{
       
       if(value){
+        console.log('click')
         setDelay(true)
         let {win,player} = await RequestApi({value})
         setDelay(false)
         setDateWin(win)
         setDatePlayer(player)
-        console.log('click')
       }
     }
     useEffect(() => {
@@ -41,17 +41,18 @@ const App =  ()=> {
         </a>
         <h1>{datePlayer.personaname}</h1>
         </div>
-        <table class="comicGreen">
+        <table className="comicGreen">
+          <tbody>
         {
-          Object.keys(dateWin).map((key)=> {
+          Object.keys(dateWin).map((key,i)=> {
             return (
               key !== 'win_rate' && key !== 'ranking_rate' 
               ?
-              <tr>
+              <tr key={i}>
               <td>{key}</td><td>{dateWin[key]}</td>
               </tr>
               :
-              <tr>
+              <tr key={i}>
               <td> 
               <h1>{key}</h1></td><td><h1>{dateWin[key]}</h1>
               </td>
@@ -59,6 +60,7 @@ const App =  ()=> {
               )
             })
           }
+          </tbody>
           </table>
           </div>
         }
