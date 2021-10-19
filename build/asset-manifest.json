@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "./static/css/main.752495cd.chunk.css",
-    "main.js": "./static/js/main.b2c8b4a8.chunk.js",
-    "main.js.map": "./static/js/main.b2c8b4a8.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.8c372cf8.js",
-    "runtime-main.js.map": "./static/js/runtime-main.8c372cf8.js.map",
-    "static/js/2.ebd974d2.chunk.js": "./static/js/2.ebd974d2.chunk.js",
-    "static/js/2.ebd974d2.chunk.js.map": "./static/js/2.ebd974d2.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/main.752495cd.chunk.css.map": "./static/css/main.752495cd.chunk.css.map",
-    "static/js/2.ebd974d2.chunk.js.LICENSE.txt": "./static/js/2.ebd974d2.chunk.js.LICENSE.txt"
+    "main.css": "/dota-tryhard/build/static/css/main.752495cd.chunk.css",
+    "main.js": "/dota-tryhard/build/static/js/main.b2c8b4a8.chunk.js",
+    "main.js.map": "/dota-tryhard/build/static/js/main.b2c8b4a8.chunk.js.map",
+    "runtime-main.js": "/dota-tryhard/build/static/js/runtime-main.3eee1300.js",
+    "runtime-main.js.map": "/dota-tryhard/build/static/js/runtime-main.3eee1300.js.map",
+    "static/js/2.ebd974d2.chunk.js": "/dota-tryhard/build/static/js/2.ebd974d2.chunk.js",
+    "static/js/2.ebd974d2.chunk.js.map": "/dota-tryhard/build/static/js/2.ebd974d2.chunk.js.map",
+    "index.html": "/dota-tryhard/build/index.html",
+    "static/css/main.752495cd.chunk.css.map": "/dota-tryhard/build/static/css/main.752495cd.chunk.css.map",
+    "static/js/2.ebd974d2.chunk.js.LICENSE.txt": "/dota-tryhard/build/static/js/2.ebd974d2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c372cf8.js",
+    "static/js/runtime-main.3eee1300.js",
     "static/js/2.ebd974d2.chunk.js",
     "static/css/main.752495cd.chunk.css",
     "static/js/main.b2c8b4a8.chunk.js"
