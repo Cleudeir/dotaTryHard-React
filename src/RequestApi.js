@@ -1,14 +1,20 @@
-import Winrate from './RequestApi/Winrate'
 import SearchSumaryPlayer from './RequestApi/SearchSumaryPlayers'
-const RequestApi= async ({value})=>{
-    const apiKey = '048776627077105958873BA4C749CEFF'
-    const hostUrl = 'http://api.steampowered.com'
-    //const proxy = 'https://cors-anywhere.herokuapp.com/'
-    const proxy = 'https://thingproxy.freeboard.io/fetch/'
-    const gameMode = 18
+import SearchPlayerAD from './RequestApi/SearchPlayerAD'
+//const proxy = 'https://cors-anywhere.herokuapp.com/'
+const RequestApi= async ({value,apiKey,hostUrl,proxy,gameMode})=>{
+
+    let playersAD = await SearchPlayerAD({value,apiKey,hostUrl,proxy,gameMode})
     
-    let win = await Winrate({value,apiKey,hostUrl,proxy,gameMode})
-    let player = await SearchSumaryPlayer({value,apiKey,hostUrl,proxy,gameMode})
-    return({win,player})
+    value = await playersAD
+    console.log(value)
+    let players = await SearchSumaryPlayer({value,apiKey,hostUrl,proxy,gameMode})
+    players.sort(function compare(a, b) {
+        if (a.ranking_rate > b.ranking_rate) return -1;
+        if (a.ranking_rate < b.ranking_rate) return 1;
+        return 0;
+    })
+    
+    console.log(players)
+    return({players})
 }
 export default RequestApi;

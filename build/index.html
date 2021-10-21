@@ -1,1 +1,1538 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href=""/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="p"/><link rel="apple-touch-icon" href=""/><link rel="manifest" href=""/><title>React App</title><link href="./static/css/main.752495cd.chunk.css" rel="stylesheet"></head><body><div id="root"></div><script>!function(e){function r(r){for(var n,a,l=r[0],f=r[1],i=r[2],c=0,s=[];c<l.length;c++)a=l[c],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&s.push(o[a][0]),o[a]=0;for(n in f)Object.prototype.hasOwnProperty.call(f,n)&&(e[n]=f[n]);for(p&&p(r);s.length;)s.shift()();return u.push.apply(u,i||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var f=t[l];0!==o[f]&&(n=!1)}n&&(u.splice(r--,1),e=a(a.s=t[0]))}return e}var n={},o={1:0},u=[];function a(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,a),t.l=!0,t.exports}a.m=e,a.c=n,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,r){if(1&r&&(e=a(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)a.d(t,n,function(r){return e[r]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="./";var l=this["webpackJsonpdota-tryhard"]=this["webpackJsonpdota-tryhard"]||[],f=l.push.bind(l);l.push=r,l=l.slice();for(var i=0;i<l.length;i++)r(l[i]);var p=f;t()}([])</script><script src="./static/js/2.ebd974d2.chunk.js"></script><script src="./static/js/main.2b4dc707.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="p"
+    />
+    <link rel="apple-touch-icon" href="" />
+   
+    <link rel="manifest" href="" />
+
+    <title>React App</title>
+    <style>.App {
+      width: 100vw;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0px;
+    }
+    *{
+      margin: 0px;
+      padding: 0px;
+    }
+    input,button{
+      align-items: center;
+      text-align: center;
+      height: 25px;
+      border: 2px solid green;
+      border-radius: 5px;
+      background-color: white;
+      margin: 10px 5px;
+      padding: 5px;
+    }
+    button{
+      height: 39px;
+      cursor:pointer;
+    }
+    button:hover{
+      background-color: rgb(0, 255, 60);
+    }
+    .result{
+      width: 80vw;
+      margin: 0px auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .cabecalho{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+    }
+    h5{
+      margin: 0;
+    }
+    .ranking{
+      width: 100%;
+    }
+    table.comicGreen {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      border: 2px solid #4F7849;
+      background-color: #EEEEEE;
+      width: 100%;
+      text-align: center;
+      border-collapse: collapse;
+    }
+    table.comicGreen td, table.comicGreen th {
+      border: 1px solid #4F7849;
+      padding: 3px 2px;
+      font-size: 1.3vmax;
+    }
+    table.comicGreen tbody td { 
+      font-weight: bold;
+      color: #4F7849;
+    }
+    table.comicGreen tr:nth-child(even) {
+      background: #CEE0CC;
+    }
+    table.comicGreen tfoot {
+      font-weight: bold;
+      color: #FFFFFF;
+      background: #4F7849;
+      background: linear-gradient(to bottom, #7b9a76 0%, #60855b 66%, #4F7849 100%);
+      border-top: 1px solid #444444;
+    }
+    
+    table.blueTable {
+      border: 1px solid #1C6EA4;
+      background-color: #EEEEEE;
+      width: 100%;
+      text-align: center;
+      border-collapse: collapse;
+    }
+    table.blueTable td, table.blueTable th {
+      border: 1px solid #AAAAAA;
+      padding: 3px 2px;
+    }
+    table.blueTable tbody td {
+      font-size: 13px;
+    }
+    table.blueTable tr:nth-child(even) {
+      background: #D0E4F5;
+    }
+    table.blueTable thead {
+      background: #1C6EA4;
+      background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+      border-bottom: 2px solid #444444;
+    }
+    table.blueTable thead th {
+      font-size: 15px;
+      font-weight: bold;
+      color: #FFFFFF;
+      border-left: 2px solid #D0E4F5;
+    }
+    table.blueTable thead th:first-child {
+      border-left: none;
+    }
+    
+    table.blueTable tfoot {
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFFFFF;
+      background: #D0E4F5;
+      background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      border-top: 2px solid #444444;
+    }
+    table.blueTable tfoot td {
+      font-size: 14px;
+    }
+    table.blueTable tfoot .links {
+      text-align: right;
+    }
+    table.blueTable tfoot .links a{
+      display: inline-block;
+      background: #1C6EA4;
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+    </style>
+  </head>
+  <body>
+   <div class="ranking">
+      <h1 style="text-align: center;">Ranking</h1>
+      <table class="blueTable">
+         <thead>
+            <tr>
+               <th>Ranking</th>
+               <th>Account_id</th>
+               <th>Icon</th>
+               <th>Name</th>
+               <th>Ranking Rate</th>
+               <th>Win Rate</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>0</td>
+               <td>195691438</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/14/140095e1a9898061df10a0ea382d2d2b4c440f49_full.jpg" width="35" alt="Permatrip"></td>
+               <td>Permatrip</td>
+               <td>15141</td>
+               <td>67%</td>
+            </tr>
+            <tr>
+               <td>1</td>
+               <td>28490738</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b8/b894fdcd4c3a33180970a131fa6e005dbf614b8d_full.jpg" width="35" alt="♥Get Rekt™"></td>
+               <td>♥Get Rekt™</td>
+               <td>14257</td>
+               <td>84%</td>
+            </tr>
+            <tr>
+               <td>2</td>
+               <td>100230886</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ff/ff5e25f03c81880c9bf94a6f65e4a85852b31662_full.jpg" width="35" alt="BARRY PRA GRINGO É MAIS CARO"></td>
+               <td>BARRY PRA GRINGO É MAIS CARO</td>
+               <td>14093</td>
+               <td>63%</td>
+            </tr>
+            <tr>
+               <td>3</td>
+               <td>1042941046</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bf/bf2381a73477d8ce8b07a3523910fe4451c46854_full.jpg" width="35" alt="💤"></td>
+               <td>💤</td>
+               <td>13532</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>4</td>
+               <td>114439357</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/72/72b61d89e23f6171583f46f280335b3069d8334f_full.jpg" width="35" alt="Junin matador de vaca"></td>
+               <td>Junin matador de vaca</td>
+               <td>13407</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>5</td>
+               <td>188606760</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" width="35" alt="Raul Monstro"></td>
+               <td>Raul Monstro</td>
+               <td>13075</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>6</td>
+               <td>116412970</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b4/b495f378e9bc0fc70c4f1a7a48421a808145ff10_full.jpg" width="35" alt="Road to 1k"></td>
+               <td>Road to 1k</td>
+               <td>13038</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>7</td>
+               <td>97150507</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a6/a6b9be9d5233a09c6d77dd6b5f30e21ed0a67535_full.jpg" width="35" alt="RuFFuS"></td>
+               <td>RuFFuS</td>
+               <td>13013</td>
+               <td>90%</td>
+            </tr>
+            <tr>
+               <td>8</td>
+               <td>153686920</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e9/e902262610db5b74f1a391131c80909f0cad7e2c_full.jpg" width="35" alt="Kaugummi"></td>
+               <td>Kaugummi</td>
+               <td>12816</td>
+               <td>71%</td>
+            </tr>
+            <tr>
+               <td>9</td>
+               <td>134105687</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4b/4b3450ded05d094806f612afaba4680d594fff71_full.jpg" width="35" alt="OmniMárcio"></td>
+               <td>OmniMárcio</td>
+               <td>12730</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>10</td>
+               <td>106142398</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/18/188f62673beb6ca88dba7e82468added619f52ef_full.jpg" width="35" alt="Ozymandias"></td>
+               <td>Ozymandias</td>
+               <td>12616</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>11</td>
+               <td>1002328010</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e2/e2ceb2d3b327399f170ef9fb05a9f60809ac05a1_full.jpg" width="35" alt="Giorno"></td>
+               <td>Giorno</td>
+               <td>12553</td>
+               <td>56%</td>
+            </tr>
+            <tr>
+               <td>12</td>
+               <td>115523025</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b6/b66a61aa6c76b3b166aebf46437a0a67375faa5c_full.jpg" width="35" alt="Resolução Online: O RPG"></td>
+               <td>Resolução Online: O RPG</td>
+               <td>12550</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>13</td>
+               <td>426319865</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bc/bc8d52bbb2c522ba59797a893efc805ec3f52b94_full.jpg" width="35" alt="Jiren-"></td>
+               <td>Jiren-</td>
+               <td>12360</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>14</td>
+               <td>98623511</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/01/0108843ec73f7c9916b9ac20b605d1880d347a99_full.jpg" width="35" alt="Shambles"></td>
+               <td>Shambles</td>
+               <td>12264</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>15</td>
+               <td>144957188</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/96/96ab770e6454e0a9b36a376446307c2ac7e9216e_full.jpg" width="35" alt="cepo de madeira"></td>
+               <td>cepo de madeira</td>
+               <td>12198</td>
+               <td>75%</td>
+            </tr>
+            <tr>
+               <td>16</td>
+               <td>171517256</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b0/b0d054e7ad4156a572efa5ef298d743bd2fd82b0_full.jpg" width="35" alt="Mat"></td>
+               <td>Mat</td>
+               <td>12139</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>17</td>
+               <td>116166677</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ce/ce62fdcf70221cf00b8ce0e8b6de8ef0a332639f_full.jpg" width="35" alt="Deamon Digger"></td>
+               <td>Deamon Digger</td>
+               <td>12064</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>18</td>
+               <td>185300259</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ed/edb03253495514aed8c95ca746692b4fc565bd68_full.jpg" width="35" alt="CristhiaN"></td>
+               <td>CristhiaN</td>
+               <td>12064</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>19</td>
+               <td>183666104</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7c/7cb8c96d987a58cbfe37f71d7506b5eb5fef6ccd_full.jpg" width="35" alt="PROFESSOR SAFADÃO"></td>
+               <td>PROFESSOR SAFADÃO</td>
+               <td>12052</td>
+               <td>61%</td>
+            </tr>
+            <tr>
+               <td>20</td>
+               <td>100592368</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b4/b47db02e7aec3f91f8be9e1e35ed09f73ca860e0_full.jpg" width="35" alt="✪ CH ✪"></td>
+               <td>✪ CH ✪</td>
+               <td>12011</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>21</td>
+               <td>440298249</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a3/a37da56fc08f5c9c0b26a22b6e38b9410f352faa_full.jpg" width="35" alt="Sapo"></td>
+               <td>Sapo</td>
+               <td>12107</td>
+               <td>79%</td>
+            </tr>
+            <tr>
+               <td>22</td>
+               <td>121887834</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a1/a1ae047efd13953c2f2bc06052d292a308bbf3df_full.jpg" width="35" alt="Mohanner"></td>
+               <td>Mohanner</td>
+               <td>11761</td>
+               <td>67%</td>
+            </tr>
+            <tr>
+               <td>23</td>
+               <td>108588044</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6c/6c862e8cce7e56ea64c77572b31337afbff54ef8_full.jpg" width="35" alt="ANGELO DI MARIA"></td>
+               <td>ANGELO DI MARIA</td>
+               <td>11758</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>24</td>
+               <td>137291293</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7b/7baec09d2b638a41daf3f1cbca544deaae9ceb35_full.jpg" width="35" alt="TORONJOTOKYO"></td>
+               <td>TORONJOTOKYO</td>
+               <td>11717</td>
+               <td>56%</td>
+            </tr>
+            <tr>
+               <td>25</td>
+               <td>102846998</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b6/b67c45eb6d4ccdfd26ce9c4dd211f8e6a7f48c1a_full.jpg" width="35" alt="elpotatoe"></td>
+               <td>elpotatoe</td>
+               <td>11716</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>26</td>
+               <td>241926627</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/63/63865bbafe1b37aab5874e8345087ac2f75f72c9_full.jpg" width="35" alt="QWERTY"></td>
+               <td>QWERTY</td>
+               <td>11701</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>27</td>
+               <td>188640399</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/af/af221c56383fc9bb14b17220deaf4a5269acc4a6_full.jpg" width="35" alt="R&amp;P | Sanca!"></td>
+               <td>R&amp;P | Sanca!</td>
+               <td>11510</td>
+               <td>60%</td>
+            </tr>
+            <tr>
+               <td>28</td>
+               <td>124293044</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c1/c10a3c16a2a7194392615dcd0eb31bfde76617e9_full.jpg" width="35" alt="Desgraça"></td>
+               <td>Desgraça</td>
+               <td>11436</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>29</td>
+               <td>22568719</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c3/c3dd6f9209385ba9142d78fd53ef2dcb7740b8c8_full.jpg" width="35" alt="Bs'1to"></td>
+               <td>Bs'1to</td>
+               <td>11413</td>
+               <td>75%</td>
+            </tr>
+            <tr>
+               <td>30</td>
+               <td>90449834</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/34/34e7f8b6079eb6fbc9e15c8a035e21a117f01b15_full.jpg" width="35" alt="fael"></td>
+               <td>fael</td>
+               <td>11369</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>31</td>
+               <td>250387395</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d8/d895e3beb13be8e2a09353cb450f59956db0d13a_full.jpg" width="35" alt="456"></td>
+               <td>456</td>
+               <td>11326</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>32</td>
+               <td>99646922</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ad/adf81a9b60c45d92e73c9d151a81227070ddf577_full.jpg" width="35" alt="ohmyGah"></td>
+               <td>ohmyGah</td>
+               <td>11325</td>
+               <td>70%</td>
+            </tr>
+            <tr>
+               <td>33</td>
+               <td>82833428</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/10/10408823cf36ac05e1a368f368363f77832b7c47_full.jpg" width="35" alt="Pandin"></td>
+               <td>Pandin</td>
+               <td>11309</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>34</td>
+               <td>31644312</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4b/4b71587848840723e8f975653803dd412bbc9de8_full.jpg" width="35" alt="monkeyGOD"></td>
+               <td>monkeyGOD</td>
+               <td>11309</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>35</td>
+               <td>30510252</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/95/95463b3d13e8dd75bacaa2b943906eb45df604ec_full.jpg" width="35" alt="carrysupremo"></td>
+               <td>carrysupremo</td>
+               <td>11294</td>
+               <td>88%</td>
+            </tr>
+            <tr>
+               <td>36</td>
+               <td>206300751</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/5f/5ffec4c0503057115bb369dada7aeda898c5ef56_full.jpg" width="35" alt="RICK"></td>
+               <td>RICK</td>
+               <td>11165</td>
+               <td>41%</td>
+            </tr>
+            <tr>
+               <td>37</td>
+               <td>106892745</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d0/d06f9b6150331553f05f400abb7b3e66c972316e_full.jpg" width="35" alt="Fael o tarado de SF"></td>
+               <td>Fael o tarado de SF</td>
+               <td>11033</td>
+               <td>45%</td>
+            </tr>
+            <tr>
+               <td>38</td>
+               <td>372618955</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ae/ae3b475531d3d31151b5b0c6484cbf6af466e874_full.jpg" width="35" alt="Xtasy"></td>
+               <td>Xtasy</td>
+               <td>10992</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>39</td>
+               <td>125066368</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/42/42e3013ea10b8ed1c9f6f94c1826febb637342b8_full.jpg" width="35" alt="PhoeniX{RGC}"></td>
+               <td>PhoeniX{RGC}</td>
+               <td>10991</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>40</td>
+               <td>844908321</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1c/1ca6120a2afebae69f57b3e7628143adec797311_full.jpg" width="35" alt="Collapse"></td>
+               <td>Collapse</td>
+               <td>10957</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>41</td>
+               <td>56467290</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/09/09332059e2e51ae01dd592a601453aada1e58333_full.jpg" width="35" alt="Res"></td>
+               <td>Res</td>
+               <td>10867</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>42</td>
+               <td>101376789</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/99/9933284e87757df59dc03ed8488ac1487fc4df9d_full.jpg" width="35" alt="Otherside"></td>
+               <td>Otherside</td>
+               <td>10853</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>43</td>
+               <td>120803571</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/12/1243657b91291a1e203fa93f19c7ca08d726dadb_full.jpg" width="35" alt="Corvo Roots"></td>
+               <td>Corvo Roots</td>
+               <td>10819</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>44</td>
+               <td>96653006</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/72/723fd94530c4bc881aadeb12a13931991ed10d69_full.jpg" width="35" alt="Senhora Obesa"></td>
+               <td>Senhora Obesa</td>
+               <td>10775</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>45</td>
+               <td>97847191</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a2/a29b16e094f81162857b15d2564b5318c0ccc76d_full.jpg" width="35" alt="Wiizzy"></td>
+               <td>Wiizzy</td>
+               <td>10735</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>46</td>
+               <td>96140755</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6f/6ff221507de95ef7bd94d8d4495f09b2ee6f4624_full.jpg" width="35" alt="Kiss-Shot"></td>
+               <td>Kiss-Shot</td>
+               <td>10627</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>47</td>
+               <td>144415922</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/74/746331867b6aff84b3b4c9a276b22587d3052290_full.jpg" width="35" alt="Paniago"></td>
+               <td>Paniago</td>
+               <td>10590</td>
+               <td>64%</td>
+            </tr>
+            <tr>
+               <td>48</td>
+               <td>98856492</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c4/c417a71d2c59d89cbcebe42da1bf0449a326da07_full.jpg" width="35" alt="Coppola"></td>
+               <td>Coppola</td>
+               <td>10554</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>49</td>
+               <td>369467513</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b8/b8f80e72ec7c956e32ed7631c675e8eccabcf0ce_full.jpg" width="35" alt="Bebê Reborn Gamer"></td>
+               <td>Bebê Reborn Gamer</td>
+               <td>10544</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>50</td>
+               <td>103826654</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7b/7b62b54771b09df2498e3478d4459a9e5090f4b2_full.jpg" width="35" alt="A Pimp named Slickback"></td>
+               <td>A Pimp named Slickback</td>
+               <td>10483</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>51</td>
+               <td>141954507</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ba/ba1be61d9b318bdf023d2c16204a8963a2ac5a41_full.jpg" width="35" alt="SGTHellish"></td>
+               <td>SGTHellish</td>
+               <td>10474</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>52</td>
+               <td>131681545</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_full.jpg" width="35" alt="__"></td>
+               <td>__</td>
+               <td>10467</td>
+               <td>62%</td>
+            </tr>
+            <tr>
+               <td>53</td>
+               <td>441026733</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/0c/0cb8ee3d2f4f22316b3fdf618c021eae739c7423_full.jpg" width="35" alt="Azul"></td>
+               <td>Azul</td>
+               <td>10451</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>54</td>
+               <td>167760929</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ef/ef0ea59b74cf412db5c246fbe42651a1768766d7_full.jpg" width="35" alt="ZEEK"></td>
+               <td>ZEEK</td>
+               <td>10408</td>
+               <td>56%</td>
+            </tr>
+            <tr>
+               <td>55</td>
+               <td>159233590</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/84/84344786ad96040bd0a866b30fe759a361b6d64d_full.jpg" width="35" alt="lugh"></td>
+               <td>lugh</td>
+               <td>10392</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>56</td>
+               <td>121296297</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7a/7aea14f4b4b9d5911e1de4b60484e3c007462bbc_full.jpg" width="35" alt="RYoMa"></td>
+               <td>RYoMa</td>
+               <td>10308</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>57</td>
+               <td>79571386</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/af/afb6e63b7858d750cb5319ab6f9939d736e3fcba_full.jpg" width="35" alt="Knull"></td>
+               <td>Knull</td>
+               <td>10306</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>58</td>
+               <td>66811061</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fa/fa1d6e5b4fdc942d6579281e016a853d50bc9f80_full.jpg" width="35" alt="Rock"></td>
+               <td>Rock</td>
+               <td>10304</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>59</td>
+               <td>172278004</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/53/53c5bc644823d5e060184ebbd63e1a0a34bc9146_full.jpg" width="35" alt="꧁ঔ☬$HĄĐØW☬ঔ꧂"></td>
+               <td>꧁ঔ☬$HĄĐØW☬ঔ꧂</td>
+               <td>10242</td>
+               <td>60%</td>
+            </tr>
+            <tr>
+               <td>60</td>
+               <td>148446901</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ba/ba3c56c2bc3c408a39ce6e3afa1c09e1d6a2ef3a_full.jpg" width="35" alt="Só time lepra"></td>
+               <td>Só time lepra</td>
+               <td>10241</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>61</td>
+               <td>154860954</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/89/890d13059f39f37f17fcceba4c72f3575c3af0ed_full.jpg" width="35" alt="carryabc"></td>
+               <td>carryabc</td>
+               <td>10868</td>
+               <td>79%</td>
+            </tr>
+            <tr>
+               <td>62</td>
+               <td>155637741</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a3/a38ea5013ea91a558a7ddb425e0bd87365c6d045_full.jpg" width="35" alt="cacto"></td>
+               <td>cacto</td>
+               <td>10208</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>63</td>
+               <td>187315119</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/41/41aeec5e610e9ec5646991a7168bc1a7f3365456_full.jpg" width="35" alt="Secretariat"></td>
+               <td>Secretariat</td>
+               <td>10148</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>64</td>
+               <td>97308241</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/9d/9d16edcdd40bb75406754b5d65106da347179725_full.jpg" width="35" alt="Wwallace_"></td>
+               <td>Wwallace_</td>
+               <td>10147</td>
+               <td>59%</td>
+            </tr>
+            <tr>
+               <td>65</td>
+               <td>101696683</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b2/b2bee723eb89edf69370e1ac89bbb8c0db56dab4_full.jpg" width="35" alt="sofista de merda (AD)"></td>
+               <td>sofista de merda (AD)</td>
+               <td>10143</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>66</td>
+               <td>20400877</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b0/b0aa73cc02952ca26788125e3d6524cf0b5e8d6a_full.jpg" width="35" alt="Octaviusss"></td>
+               <td>Octaviusss</td>
+               <td>10107</td>
+               <td>60%</td>
+            </tr>
+            <tr>
+               <td>67</td>
+               <td>428934650</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/9c/9cb33145215191bdf388e5f32538371c4802f88f_full.jpg" width="35" alt="♠• ❈LevBulgaro❈ •♠"></td>
+               <td>♠• ❈LevBulgaro❈ •♠</td>
+               <td>10104</td>
+               <td>76%</td>
+            </tr>
+            <tr>
+               <td>68</td>
+               <td>185280798</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d4/d4b1ad05d5accf25ffc9ba2f3a64a7073f3b0cd8_full.jpg" width="35" alt="Mr. Lefa"></td>
+               <td>Mr. Lefa</td>
+               <td>10099</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>69</td>
+               <td>239901337</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c7/c7b3b534e423f7d8a2da608873180f701696516e_full.jpg" width="35" alt="Lc (*Jair el Dulce)"></td>
+               <td>Lc (*Jair el Dulce)</td>
+               <td>10075</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>70</td>
+               <td>177382470</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c827fa81481ceff6d7f3d3ade6e5091c309a4732_full.jpg" width="35" alt="McLovin giordota.com"></td>
+               <td>McLovin giordota.com</td>
+               <td>10049</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>71</td>
+               <td>186870082</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eba1769403230a68f2d5403286a90dc01f62be53_full.jpg" width="35" alt="ZL"></td>
+               <td>ZL</td>
+               <td>10046</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>72</td>
+               <td>1017487158</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/40/40f031953fd76d485ea47b93b7be60d3802e22b0_full.jpg" width="35" alt="Xin Quello :v"></td>
+               <td>Xin Quello :v</td>
+               <td>10018</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>73</td>
+               <td>86862826</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/47/47f00308b9bee409fbf0b45c8b9439defc35529b_full.jpg" width="35" alt="Koala"></td>
+               <td>Koala</td>
+               <td>10001</td>
+               <td>45%</td>
+            </tr>
+            <tr>
+               <td>74</td>
+               <td>150386562</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f7/f762e80832d27b0404e98a54ba4c33274e37b179_full.jpg" width="35" alt="Tyler Dun"></td>
+               <td>Tyler Dun</td>
+               <td>9976</td>
+               <td>56%</td>
+            </tr>
+            <tr>
+               <td>75</td>
+               <td>170062075</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/87/87936821d37e3ea903d9833a0f1068c18a2a6050_full.jpg" width="35" alt="@:3Rose"></td>
+               <td>@:3Rose</td>
+               <td>9941</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>76</td>
+               <td>110548608</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/5f/5ffa69fda33f2c6b62fa7db05b62d916949f4e5f_full.jpg" width="35" alt="Kurozaki-sensei  凸-.-凸"></td>
+               <td>Kurozaki-sensei  凸-.-凸</td>
+               <td>9910</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>77</td>
+               <td>115456364</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1a/1a221aefb0562ff0fb06717cc8cddbf65885aafe_full.jpg" width="35" alt="Ratão"></td>
+               <td>Ratão</td>
+               <td>9909</td>
+               <td>43%</td>
+            </tr>
+            <tr>
+               <td>78</td>
+               <td>116755949</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/00/008e8bf806b1c0f0fcc1b5fa8dd95b5070f30547_full.jpg" width="35" alt="PIN"></td>
+               <td>PIN</td>
+               <td>9901</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>79</td>
+               <td>319651934</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/14/144fcadca62e350f9aeb680b3535d715391cd2c9_full.jpg" width="35" alt="ABC"></td>
+               <td>ABC</td>
+               <td>9885</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>80</td>
+               <td>925077802</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3b/3b570aeb226c084ef3f351a3d059a08a7550693a_full.jpg" width="35" alt="Hera"></td>
+               <td>Hera</td>
+               <td>9854</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>81</td>
+               <td>856228942</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/57/571caeed66ab29ba7e4b7d826fa9fa7211992f5f_full.jpg" width="35" alt="Halt"></td>
+               <td>Halt</td>
+               <td>9848</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>82</td>
+               <td>116276341</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/cd/cd9eb1dd14949a1d14f6c270e4e21d774f72e4ae_full.jpg" width="35" alt="[s̲̅i̲̅и̲̅i̲̅s̲̅т̲̅я̲̅σ]̲"></td>
+               <td>[s̲̅i̲̅и̲̅i̲̅s̲̅т̲̅я̲̅σ]̲</td>
+               <td>9834</td>
+               <td>70%</td>
+            </tr>
+            <tr>
+               <td>83</td>
+               <td>116816181</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a5/a514cfb03d3d05aad56c1f35e7c9c485dfe02f58_full.jpg" width="35" alt="D▼RK"></td>
+               <td>D▼RK</td>
+               <td>9834</td>
+               <td>47%</td>
+            </tr>
+            <tr>
+               <td>84</td>
+               <td>189857918</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2a/2a56ff92a2fa112d4122a75d411ef5a4dc8f7280_full.jpg" width="35" alt="Molekai"></td>
+               <td>Molekai</td>
+               <td>9827</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>85</td>
+               <td>373671766</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2d/2d8cc312da2efe0ac1b80b7405f11bd714c2b243_full.jpg" width="35" alt="Temple Sour"></td>
+               <td>Temple Sour</td>
+               <td>9817</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>86</td>
+               <td>61895929</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/72/7291ceb6c234b692fbcab06fdb28b388c00e08db_full.jpg" width="35" alt="kimzerapqp"></td>
+               <td>kimzerapqp</td>
+               <td>9784</td>
+               <td>77%</td>
+            </tr>
+            <tr>
+               <td>87</td>
+               <td>71256297</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/07/07ed263d68e3e95278226c6417f86d14b43abd14_full.jpg" width="35" alt="Gabu"></td>
+               <td>Gabu</td>
+               <td>9718</td>
+               <td>45%</td>
+            </tr>
+            <tr>
+               <td>88</td>
+               <td>143334815</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d1/d1f5f502d01338ed2cc787d422f8caf63404f135_full.jpg" width="35" alt="FATBOY21"></td>
+               <td>FATBOY21</td>
+               <td>9711</td>
+               <td>47%</td>
+            </tr>
+            <tr>
+               <td>89</td>
+               <td>125909018</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/9e/9e7df6dc4b7f95f7971d16a2620fd104c7ad9a34_full.jpg" width="35" alt="GELADEIRA CONSUL FROSFRI"></td>
+               <td>GELADEIRA CONSUL FROSFRI</td>
+               <td>9682</td>
+               <td>45%</td>
+            </tr>
+            <tr>
+               <td>90</td>
+               <td>143076863</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1f/1f097d4593e31c8fbbae075978e5983c59f1e33d_full.jpg" width="35" alt="Beta"></td>
+               <td>Beta</td>
+               <td>9667</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>91</td>
+               <td>161861703</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/94/9451f750e42caa67a32812d8c4c17c9d2834cdef_full.jpg" width="35" alt="carrygba"></td>
+               <td>carrygba</td>
+               <td>9664</td>
+               <td>71%</td>
+            </tr>
+            <tr>
+               <td>92</td>
+               <td>118028178</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/73/73ab90b3ef79fe0af7bcae9726658dddfd54b355_full.jpg" width="35" alt="JosiasDoHs"></td>
+               <td>JosiasDoHs</td>
+               <td>9663</td>
+               <td>47%</td>
+            </tr>
+            <tr>
+               <td>93</td>
+               <td>41240260</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c804ed9fc493d939a39463c7e21f93fc33d78ce8_full.jpg" width="35" alt="pomba"></td>
+               <td>pomba</td>
+               <td>9618</td>
+               <td>61%</td>
+            </tr>
+            <tr>
+               <td>94</td>
+               <td>330396697</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b2/b2edbc430cffa963966ebafc9e7844414a9c51c1_full.jpg" width="35" alt="Hiroshi"></td>
+               <td>Hiroshi</td>
+               <td>9617</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>95</td>
+               <td>153092756</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a9/a92bcb3d551b8a52a945d2d7e4ebd2f95494c8ba_full.jpg" width="35" alt="Farinha"></td>
+               <td>Farinha</td>
+               <td>9566</td>
+               <td>56%</td>
+            </tr>
+            <tr>
+               <td>96</td>
+               <td>154055982</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d0/d000ad285eb262b414946e108d4da81edc2273b9_full.jpg" width="35" alt="AD Nunca"></td>
+               <td>AD Nunca</td>
+               <td>9650</td>
+               <td>40%</td>
+            </tr>
+            <tr>
+               <td>97</td>
+               <td>120983192</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/14/14cef974e293830f41fcd626af49374ab8e6f0c1_full.jpg" width="35" alt="◣TNT◢  RulezZ"></td>
+               <td>◣TNT◢  RulezZ</td>
+               <td>9550</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>98</td>
+               <td>155252232</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/49/49dcc015581d0495e9eae851dfab51330fbc6266_full.jpg" width="35" alt="LUDOG"></td>
+               <td>LUDOG</td>
+               <td>9540</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>99</td>
+               <td>202039844</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/73/735b50d542aa21b602e2291a6ebe5fe6364b672c_full.jpg" width="35" alt="§îr §l@¥ër"></td>
+               <td>§îr §l@¥ër</td>
+               <td>9487</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>100</td>
+               <td>82540356</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ab/ab6b94299e5e528d343882012f936f3054e2d3a2_full.jpg" width="35" alt="VahN"></td>
+               <td>VahN</td>
+               <td>9424</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>101</td>
+               <td>135020693</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d2/d25f15d279f1085d316d89f61ff9c8fc1b626185_full.jpg" width="35" alt="Jorge o Caolho"></td>
+               <td>Jorge o Caolho</td>
+               <td>9380</td>
+               <td>60%</td>
+            </tr>
+            <tr>
+               <td>102</td>
+               <td>101356996</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ea/ea6a859f43fbe078fbe467bb977f31b242b167ca_full.jpg" width="35" alt="Ш"></td>
+               <td>Ш</td>
+               <td>9359</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>103</td>
+               <td>39562437</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3c/3c127f2ffa832d27de005e71bd61a076df3ecd8d_full.jpg" width="35" alt="Ca$how"></td>
+               <td>Ca$how</td>
+               <td>9268</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>104</td>
+               <td>86863531</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c4/c44419f61d7b381f3e2997c2d8e6d9545250d175_full.jpg" width="35" alt="Switchback"></td>
+               <td>Switchback</td>
+               <td>9256</td>
+               <td>47%</td>
+            </tr>
+            <tr>
+               <td>105</td>
+               <td>122522437</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c5/c533c416375b039f2d8af5a85c5b04b98008f909_full.jpg" width="35" alt="F_a_N_t_A"></td>
+               <td>F_a_N_t_A</td>
+               <td>9227</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>106</td>
+               <td>457110832</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/0a/0a4bf819d929859d3aafb4d3d9e8cbf4941f85a2_full.jpg" width="35" alt="·  Ypher  ·"></td>
+               <td>·  Ypher  ·</td>
+               <td>9221</td>
+               <td>56%</td>
+            </tr>
+            <tr>
+               <td>107</td>
+               <td>114961968</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/42/4290627cb61ac0c25fe363bdade78442187c040a_full.jpg" width="35" alt="Pouca Telha"></td>
+               <td>Pouca Telha</td>
+               <td>9157</td>
+               <td>52%</td>
+            </tr>
+            <tr>
+               <td>108</td>
+               <td>121765224</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/5d/5da0860400fd994cbc32e18a768da198c168f19f_full.jpg" width="35" alt="LegatO"></td>
+               <td>LegatO</td>
+               <td>9152</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>109</td>
+               <td>118788491</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/12/12d7806c0501fe32355f465bf931b24b98b7ee9c_full.jpg" width="35" alt="Cass"></td>
+               <td>Cass</td>
+               <td>9127</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>110</td>
+               <td>104256286</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e4/e446d8fd48afae183ce627aade4cbfb7074d71c5_full.jpg" width="35" alt="The.Joker®"></td>
+               <td>The.Joker®</td>
+               <td>9119</td>
+               <td>45%</td>
+            </tr>
+            <tr>
+               <td>111</td>
+               <td>94616912</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/6a/6a439ee6f3c018e97c44db68d63f1d39d7042a30_full.jpg" width="35" alt="C"></td>
+               <td>C</td>
+               <td>9112</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>112</td>
+               <td>258279959</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/79/79d3fe5839617eb83a9661071ed021dd56ac8a5b_full.jpg" width="35" alt="TromedloV"></td>
+               <td>TromedloV</td>
+               <td>9029</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>113</td>
+               <td>104357836</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/91/918e88fe0a2a6a6f1533b21555fc7962828d83c9_full.jpg" width="35" alt="Ven"></td>
+               <td>Ven</td>
+               <td>9003</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>114</td>
+               <td>84234004</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/5f/5fa01cde13531e6d2a9c0881fbd3c3f25a975cc1_full.jpg" width="35" alt="Oumuamua"></td>
+               <td>Oumuamua</td>
+               <td>9053</td>
+               <td>34%</td>
+            </tr>
+            <tr>
+               <td>115</td>
+               <td>154431686</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1c/1c89e20ab21da732ddeb3c816e43414d2b702bfd_full.jpg" width="35" alt="_PrO_DocinhO_"></td>
+               <td>_PrO_DocinhO_</td>
+               <td>9501</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>116</td>
+               <td>358892654</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/07/0722cfe0b843fd4f612541ae5a9247a893744ed1_full.jpg" width="35" alt="MINATOXD"></td>
+               <td>MINATOXD</td>
+               <td>8905</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>117</td>
+               <td>149654039</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/7c/7c1436fabbccb5e7f0cff4c72058fd3b4a6463c6_full.jpg" width="35" alt="fatboyslim"></td>
+               <td>fatboyslim</td>
+               <td>8854</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>118</td>
+               <td>131900674</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fa/fa16cc7c3db952357150b507888941961f237591_full.jpg" width="35" alt="[33] Pernambucano"></td>
+               <td>[33] Pernambucano</td>
+               <td>8802</td>
+               <td>87%</td>
+            </tr>
+            <tr>
+               <td>119</td>
+               <td>435010618</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/a8/a82ad6e44a71f84074b9b68cef37db26bbfc26ac_full.jpg" width="35" alt="◘ giordota.com"></td>
+               <td>◘ giordota.com</td>
+               <td>8707</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>120</td>
+               <td>87067897</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d3/d3e51d47df7446a0aa0da135d88f6e3711e1b9fb_full.jpg" width="35" alt="Balgus"></td>
+               <td>Balgus</td>
+               <td>8640</td>
+               <td>72%</td>
+            </tr>
+            <tr>
+               <td>121</td>
+               <td>439876983</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/0b/0b33e56eac3e5b048467351ded8c7ac15f9ae19c_full.jpg" width="35" alt="ζ͜͡Cac0"></td>
+               <td>ζ͜͡Cac0</td>
+               <td>8625</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>122</td>
+               <td>131909143</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4a/4afb83721d89cd72c547a42ee2c04cf96b7c1e43_full.jpg" width="35" alt="To de Boa"></td>
+               <td>To de Boa</td>
+               <td>8609</td>
+               <td>41%</td>
+            </tr>
+            <tr>
+               <td>123</td>
+               <td>124062689</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d7ba6adaee62b9fa65d2e0d7acc88b0139e69588_full.jpg" width="35" alt="bjørninspan!sh"></td>
+               <td>bjørninspan!sh</td>
+               <td>8552</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>124</td>
+               <td>102250319</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg" width="35" alt="ZTSEV"></td>
+               <td>ZTSEV</td>
+               <td>8549</td>
+               <td>59%</td>
+            </tr>
+            <tr>
+               <td>125</td>
+               <td>145515334</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/65/652eae5ddadaa75714ee72d9f95ecb9dc864bf3a_full.jpg" width="35" alt="Dk._Schneider"></td>
+               <td>Dk._Schneider</td>
+               <td>8459</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>126</td>
+               <td>121847586</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2b/2bd949136b2199cceafa1c88ca17117e3eb20435_full.jpg" width="35" alt="Alucard"></td>
+               <td>Alucard</td>
+               <td>8458</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>127</td>
+               <td>118322919</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/36/36cf9ab95f8d3f6aa8d089820127b150155987ff_full.jpg" width="35" alt="Voldemort"></td>
+               <td>Voldemort</td>
+               <td>8454</td>
+               <td>45%</td>
+            </tr>
+            <tr>
+               <td>128</td>
+               <td>122002820</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/73/7318ca5fb70404d29d752492cab83b07278c6f54_full.jpg" width="35" alt="Tom-IronSide"></td>
+               <td>Tom-IronSide</td>
+               <td>8442</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>129</td>
+               <td>134351159</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/cd/cd24f5236309180214e7793a2096825ae1380cbf_full.jpg" width="35" alt="Le Te Finco™"></td>
+               <td>Le Te Finco™</td>
+               <td>8407</td>
+               <td>45%</td>
+            </tr>
+            <tr>
+               <td>130</td>
+               <td>137969017</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/9a/9acbd686b69e6d67db332f778d7d27813af96cf3_full.jpg" width="35" alt="S_K_O_L"></td>
+               <td>S_K_O_L</td>
+               <td>8404</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>131</td>
+               <td>103709070</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e6/e689ac744b8b9f7b84a8bb9bfc5913b19d3a1654_full.jpg" width="35" alt="Khronos_the_father"></td>
+               <td>Khronos_the_father</td>
+               <td>8399</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>132</td>
+               <td>112886183</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/5c/5cf9c0122d73e1ce593f8cc9a109e991d14dc8ff_full.jpg" width="35" alt="Tony"></td>
+               <td>Tony</td>
+               <td>8396</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>133</td>
+               <td>49423551</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/bb/bb4d933bc1170112754e554fcf0c323c4b10e6e8_full.jpg" width="35" alt="firecaxassa"></td>
+               <td>firecaxassa</td>
+               <td>8372</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>134</td>
+               <td>132990870</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f6/f61296bbd68cbccd3cba8cfbb4bd7818931852cd_full.jpg" width="35" alt="Golden Boy"></td>
+               <td>Golden Boy</td>
+               <td>8330</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>135</td>
+               <td>109177173</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/59/59e385eaf9d0a6763353df5ded244de3bc651c28_full.jpg" width="35" alt="JV"></td>
+               <td>JV</td>
+               <td>8223</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>136</td>
+               <td>127639761</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/ef/effbf6f3e5befc84a7d93d26708e6b193f016f9e_full.jpg" width="35" alt="Cellas"></td>
+               <td>Cellas</td>
+               <td>8185</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>137</td>
+               <td>65122412</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/59/59d2b7be2d89ad1feb09bfebe8ec6f9ee1568239_full.jpg" width="35" alt="理鹰 NaNaiZ"></td>
+               <td>理鹰 NaNaiZ</td>
+               <td>8172</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>138</td>
+               <td>297839962</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/95/950f9f3147d4c8530a5072825d01c34ee3f1afa1_full.jpg" width="35" alt="EddyFizio"></td>
+               <td>EddyFizio</td>
+               <td>8167</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>139</td>
+               <td>156641310</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3f/3ff1d9e1fd5688186d21134c8a515f56f960b67a_full.jpg" width="35" alt="Rady"></td>
+               <td>Rady</td>
+               <td>8077</td>
+               <td>69%</td>
+            </tr>
+            <tr>
+               <td>140</td>
+               <td>98897169</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/63/630076924995521566d87e8453d4f008f623edbf_full.jpg" width="35" alt="stalin"></td>
+               <td>stalin</td>
+               <td>8074</td>
+               <td>42%</td>
+            </tr>
+            <tr>
+               <td>141</td>
+               <td>113011844</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/5b/5b21c8303607bc03d7091fc3ac225fe4958c7799_full.jpg" width="35" alt="Oxizakre"></td>
+               <td>Oxizakre</td>
+               <td>8045</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>142</td>
+               <td>43996534</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/53/53c66d47bd7250db2ed7e33a23050985da85ed60_full.jpg" width="35" alt="Delanche"></td>
+               <td>Delanche</td>
+               <td>8036</td>
+               <td>53%</td>
+            </tr>
+            <tr>
+               <td>143</td>
+               <td>87683422</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f0/f08b34efd0bf0b6cd6505b10a21ab41385932873_full.jpg" width="35" alt="Avatar"></td>
+               <td>Avatar</td>
+               <td>8032</td>
+               <td>61%</td>
+            </tr>
+            <tr>
+               <td>144</td>
+               <td>164368106</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/73/73214fb000c29d0b5cd217f40e0780c16b6a1502_full.jpg" width="35" alt="ZenMaster"></td>
+               <td>ZenMaster</td>
+               <td>7997</td>
+               <td>49%</td>
+            </tr>
+            <tr>
+               <td>145</td>
+               <td>112015249</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2c/2ce6b5705b0e0ee631eeb27aa743e48ea9740eee_full.jpg" width="35" alt="Bill ButtLicker"></td>
+               <td>Bill ButtLicker</td>
+               <td>7990</td>
+               <td>47%</td>
+            </tr>
+            <tr>
+               <td>146</td>
+               <td>153498015</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/3b/3bac18700969c4c3fe6eec62283e7f95b7de1900_full.jpg" width="35" alt="kiko"></td>
+               <td>kiko</td>
+               <td>7979</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>147</td>
+               <td>67656344</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/f2/f28b55b7f59e8634673f24e9deb840f173d7eec1_full.jpg" width="35" alt="Cout"></td>
+               <td>Cout</td>
+               <td>7974</td>
+               <td>51%</td>
+            </tr>
+            <tr>
+               <td>148</td>
+               <td>108974214</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/30/305baba9e3df3122866548667061cb4f993842b1_full.jpg" width="35" alt="Jaime Targaryen"></td>
+               <td>Jaime Targaryen</td>
+               <td>7956</td>
+               <td>40%</td>
+            </tr>
+            <tr>
+               <td>149</td>
+               <td>133526369</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/70/70ac5cd3fc0d7d921858cb9c9d73ce473a99455f_full.jpg" width="35" alt="Cooperfield"></td>
+               <td>Cooperfield</td>
+               <td>7909</td>
+               <td>56%</td>
+            </tr>
+            <tr>
+               <td>150</td>
+               <td>136984195</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/83/83d241ccbe337ce50305d36c54bc21e60724d029_full.jpg" width="35" alt="coach quantico de dota 2"></td>
+               <td>coach quantico de dota 2</td>
+               <td>7831</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>151</td>
+               <td>107001722</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b1/b179188f82923c2790282c88d77948df19902971_full.jpg" width="35" alt="El Pequeñinho Lòidinho"></td>
+               <td>El Pequeñinho Lòidinho</td>
+               <td>7827</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>152</td>
+               <td>83394330</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/44/44b890dafa9ab5ddf5ea453e0b6ec079063ab18f_full.jpg" width="35" alt="Cum Gaming"></td>
+               <td>Cum Gaming</td>
+               <td>7782</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>153</td>
+               <td>114369919</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/dd/dd7d6e4be426ef37953753fb8fa8077462a35583_full.jpg" width="35" alt="Drednezz"></td>
+               <td>Drednezz</td>
+               <td>7716</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>154</td>
+               <td>83579333</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/93/9398f89d47b7b78bdf812c7de2211a854e4c015d_full.jpg" width="35" alt="Salem"></td>
+               <td>Salem</td>
+               <td>7552</td>
+               <td>46%</td>
+            </tr>
+            <tr>
+               <td>155</td>
+               <td>139224158</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/4c/4cf41e9a62245de0e4ea86602bf84f5c43a1a409_full.jpg" width="35" alt="Thalomon"></td>
+               <td>Thalomon</td>
+               <td>7535</td>
+               <td>43%</td>
+            </tr>
+            <tr>
+               <td>156</td>
+               <td>57774572</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/22/2282c4f2129964e9ada02877b13875062ea6a77e_full.jpg" width="35" alt="Alabama Man"></td>
+               <td>Alabama Man</td>
+               <td>7445</td>
+               <td>67%</td>
+            </tr>
+            <tr>
+               <td>157</td>
+               <td>98291971</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/28/28a1c94e99079618fcf9e4024ae8ad0cf6b2017b_full.jpg" width="35" alt="Trebolero"></td>
+               <td>Trebolero</td>
+               <td>7329</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>158</td>
+               <td>252291267</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/57/578bed7fc73bb0efec7d179d2bc406d91b1d4bbf_full.jpg" width="35" alt="tyerwish"></td>
+               <td>tyerwish</td>
+               <td>7182</td>
+               <td>47%</td>
+            </tr>
+            <tr>
+               <td>159</td>
+               <td>397861987</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/64/6445fbc1f16f1b5c6a67a94719d118d67484ea35_full.jpg" width="35" alt="♫♛ Trafalgar❤ al e%"></td>
+               <td>♫♛ Trafalgar❤ al e%</td>
+               <td>7140</td>
+               <td>57%</td>
+            </tr>
+            <tr>
+               <td>160</td>
+               <td>204561042</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2f/2f24da7d394d84143b21dc5efc87cae319f2c718_full.jpg" width="35" alt="SURAJ HUA!"></td>
+               <td>SURAJ HUA!</td>
+               <td>6920</td>
+               <td>58%</td>
+            </tr>
+            <tr>
+               <td>161</td>
+               <td>109832892</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/96/96b879a49f701aca40576e73a2a8b27820878574_full.jpg" width="35" alt="Suit"></td>
+               <td>Suit</td>
+               <td>6701</td>
+               <td>50%</td>
+            </tr>
+            <tr>
+               <td>162</td>
+               <td>116605613</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/cf/cfaf6917f47ca6122396f46e485a79a090f29fa0_full.jpg" width="35" alt="Ticzy"></td>
+               <td>Ticzy</td>
+               <td>6639</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>163</td>
+               <td>148257637</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/92/9254e0ed1b75029f8002f643d8597b2407b18161_full.jpg" width="35" alt="Maestro Roshan &quot;FEED-ONE&quot;"></td>
+               <td>Maestro Roshan "FEED-ONE"</td>
+               <td>6627</td>
+               <td>40%</td>
+            </tr>
+            <tr>
+               <td>164</td>
+               <td>90067272</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8c/8c52fb35279e28c3aa58806d56b30749069a4802_full.jpg" width="35" alt="Weat"></td>
+               <td>Weat</td>
+               <td>6540</td>
+               <td>48%</td>
+            </tr>
+            <tr>
+               <td>165</td>
+               <td>129411725</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/14/148c5b99ec6232f395341fc714d8e81d22db4b5a_full.jpg" width="35" alt="Asdasd!!"></td>
+               <td>Asdasd!!</td>
+               <td>6357</td>
+               <td>43%</td>
+            </tr>
+            <tr>
+               <td>166</td>
+               <td>122010558</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8b/8bacb35248491072a3e89cfbc7be766582ecbfc5_full.jpg" width="35" alt="Gryphon™"></td>
+               <td>Gryphon™</td>
+               <td>6203</td>
+               <td>73%</td>
+            </tr>
+            <tr>
+               <td>167</td>
+               <td>837926549</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/cb/cb5644fc3d4e5543d3da364e0567ce9d2add84a5_full.jpg" width="35" alt="CaaaL¶"></td>
+               <td>CaaaL¶</td>
+               <td>5938</td>
+               <td>54%</td>
+            </tr>
+            <tr>
+               <td>168</td>
+               <td>109485411</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/dc/dc90fac7a02204940dd106048e9418e9d20abae8_full.jpg" width="35" alt="♥Game♥"></td>
+               <td>♥Game♥</td>
+               <td>5874</td>
+               <td>44%</td>
+            </tr>
+            <tr>
+               <td>169</td>
+               <td>116504886</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/64/64c298fffcf4bfcea65fc533b722abf88484ef71_full.jpg" width="35" alt="ZinZin"></td>
+               <td>ZinZin</td>
+               <td>5554</td>
+               <td>43%</td>
+            </tr>
+            <tr>
+               <td>170</td>
+               <td>362854210</td>
+               <td><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/1a/1a0f7d3fd33b77979978ae0bfcb3c67a0d2da2c4_full.jpg" width="35" alt="Carlos Brabini"></td>
+               <td>Carlos Brabini</td>
+               <td>5130</td>
+               <td>48%</td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+  </body>
+</html>
