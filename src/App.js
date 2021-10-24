@@ -142,7 +142,7 @@ const App =  ()=> {
           return(
             x.ranking_rate>0 &&
             <tr key={key}>
-            <td>{key}</td><td>{x.accountid}</td> <td><img src={x.avatarfull} width="35" alt={x.personaname}/></td><td>{x.personaname}</td><td>{Math.ceil(x.ranking_rate)}</td><td>{Math.ceil(x.win_rate)}%</td>
+            <td>{key+1}</td><td>{x.accountid}</td> <td><img src={x.avatarfull} width="35" alt={x.personaname}/></td><td>{x.personaname}</td><td>{Math.ceil(x.ranking_rate)}</td><td>{Math.ceil(x.win_rate)}%</td>
             </tr>)
           })}
           </tbody>

@@ -38,7 +38,7 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
                 return(players)
             }          
         })
-        .catch((e)=>{return false})
+        .catch(()=>{return false})
         
         if(!profile){
             profile = {avatarfull:'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/a8/a881079e7abf4c621e86e21116f8c0dd3ee40619_full.jpg',
@@ -60,23 +60,19 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
         .then(async(response)=>{return  await response.json()})
         .then((data)=>{
             console.log('search_History')
-            if(data.status==15){
+            if(data.status===15){
                 return false
-            }
-            
+            }            
             let x = data.result.matches
             let z = []
-            for(let j=0;j<x.length;j++){
-                
-                let {match_id,players} = data.result.matches[j]
-                
+            for(let j=0;j<x.length;j++){                
+                let {match_id,players} = data.result.matches[j]                
                 if(players.filter(x => x.account_id === accountid).length>0){
                     let y = players.filter(x => x.account_id === accountid)[0]
                     let {player_slot} = y
                     z.push({match_id,player_slot})
                 }
-            }
-            
+            }            
             return(z)
         })
         .catch((e)=>{return false})       
@@ -92,49 +88,46 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
         }
         //--
         //Wirate set
-        for( let k = 0;k<10;k++){
+        const qnt = 50
+        for( let k = 0;k<qnt;k++){
             if(Match_History[k] && Match_History[k].match_id){
-                const match = async(e)=>{   
-                    console.log(e)                 
-                    let s =  await  fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchDetails/v1?match_id=${Match_History[e].match_id}&key=${apiKey}`)
+                const match = async(e)=>{                                      
+                    let s =  fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchDetails/v1?match_id=${Match_History[e].match_id}&key=${apiKey}`)
                     .then((response)=>{return  response.json()})
                     .then((data)=>{
-                        console.log('search_Match')
-                        // console.log(data.result.radiant_win,data.result.players)
-                        if(data && data.result && data.result.radiant_win && data.result.players){                           
-                            return data.result    
-                        }
-                        else{return false}
+                        return data.result
                     })
                     .catch(()=>{return false})
-                    console.log(s)
-                    if(s && s!==undefined){                        
-                        return s
-                    }
-                    else{return false}
+                    return s
                 }
-                let a = await match(k)
-                if(!a){ continue }
-                console.log({a})
+                let date = await match(k)                
+                if(!date){ continue }
+                console.log('search_Match')
+                let y = date.players.filter(x=>x.account_id === accountid)[0]            
+                let {assists,gold_per_min,xp_per_min,kills,deaths,last_hits,denies,hero_damage,hero_healing,net_worth,tower_damage} = y                
+                obj.media_assists += assists
+                obj.media_gpm += gold_per_min
+                obj.media_xpm += xp_per_min
+                obj.media_kills += kills
+                obj.media_deaths += deaths
+                obj.media_last_hists += last_hits
+                obj.media_denies += denies
+                obj.media_hero_damage += hero_damage
+                obj.media_hero_healing += hero_healing
+                obj.media_net_worth += net_worth
+                obj.media_tower_damage += tower_damage
+                obj.match += 1
+                if(date.radiant_win){
+                    if(Match_History[k].player_slot<5){
+                        obj.win_rate+=1
+                    }
+                }
+                else{
+                    if(Match_History[k].player_slot>5){
+                        obj.win_rate+=1
+                    }
+                }
                 
-                let {assists,gold_per_min,xp_per_min,kills,deaths,last_hits,denies,hero_damage,hero_healing,net_worth,tower_damage} = y
-                if(radiant_win && assists && gold_per_min && xp_per_min && kills && deaths && last_hits && denies && hero_damage && hero_healing && net_worth  && tower_damage) 
-                {
-                    obj.media_assists += assists
-                    obj.media_gpm += gold_per_min
-                    obj.media_xpm += xp_per_min
-                    obj.media_kills += kills
-                    obj.media_deaths += -deaths
-                    obj.media_last_hists += last_hits
-                    obj.media_denies += denies
-                    obj.media_hero_damage += hero_damage
-                    obj.media_hero_healing += hero_healing
-                    obj.media_net_worth += net_worth
-                    obj.media_tower_damage += tower_damage
-                    obj.match += 1
-                    if(radiant_win){if(Match_History[k].player_slot<5){obj.win_rate+=1}}
-                    else{if(Match_History[k].player_slot>5){obj.win_rate+=1}}
-                }  */   
             }            
         }
         if(obj.match !==0){
@@ -142,33 +135,32 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
             obj.media_gpm = (obj.media_gpm/obj.match)
             obj.media_xpm = (obj.media_xpm/obj.match)
             obj.media_kills = (obj.media_kills/obj.match)
-            obj.media_deaths = -(obj.media_deaths/obj.match)
+            obj.media_deaths = (obj.media_deaths/obj.match)
             obj.media_last_hists = (obj.media_last_hists/obj.match)
             obj.media_denies = (obj.media_denies/obj.match)
             obj.media_hero_damage = (obj.media_hero_damage/obj.match)
             obj.media_hero_healing = (obj.media_hero_healing/obj.match)
             obj.media_net_worth = (obj.media_net_worth/obj.match)
             obj.media_tower_damage = (obj.media_tower_damage/obj.match)
-            
-            obj.accountid = accountid
-            //--
-            //Resultado return
-            let pre_result = Object.assign({}, obj, profile);
-            await result.push(pre_result)
-            if(value.length>1){
-                await localStorage.setItem('result',JSON.stringify(result))
-            }
-        }
+            obj.win_rate = parseFloat((obj.win_rate/obj.match*100).toFixed(2))
+        }  
+        obj.accountid = accountid
         //--
-        
+        //Resultado return
+        let pre_result = Object.assign({}, obj, profile);
+        result.push(pre_result)
+        if(value.length>1){
+            localStorage.setItem('result',JSON.stringify(result))
+        }        
+        //--        
     }
-    for(let i= result.length; i<value.length;i++){
+   /* for(let i= result.length; i<value.length;i++){
         console.log('start',i,':',value.length)
         let steamId = await new SteamID(`[U:1:${value[i]}]`)
         let accountid = value[i]
         await search({accountid,steamId})
-    } 
+    } */
     console.log(result)
-    return(await Promise.all(result))
+    return(await (result))
 }
 export default SearchSumaryPlayer;

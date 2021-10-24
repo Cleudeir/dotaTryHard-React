@@ -10,11 +10,7 @@ const RequestApi= async ({value,apiKey,hostUrl,proxy,gameMode})=>{
     let players = await SearchSumaryPlayer({value,apiKey,hostUrl,proxy,gameMode})
     
    // localStorage.setItem('result',JSON.stringify(players)))
-    players.sort(function compare(a, b) {
-        if (a.ranking_rate > b.ranking_rate) return -1;
-        if (a.ranking_rate < b.ranking_rate) return 1;
-        return 0;
-    })
+
     let geral = {
         win_rate : 0,
         ranking_rate: 0,
@@ -64,9 +60,15 @@ const RequestApi= async ({value,apiKey,hostUrl,proxy,gameMode})=>{
             let x11 = 1/geral.media_net_worth * x.media_net_worth
             let x12 = 1/geral.media_tower_damage * x.media_tower_damage
             let x13 = 1/geral.media_assists * x.media_assists   
-            console.log(x02,x03,x04)         
+            console.log({x02,x03,x13})         
             x.ranking_rate = parseFloat((x02 * (x03 + x04 + x05 + x06 + x07 + x08 + x09 + x10 + x11 + x12 + x13)/11*1000).toFixed(0))            
         }
+    })
+
+    players.sort(function compare(a, b) {
+        if (a.ranking_rate > b.ranking_rate) return -1;
+        if (a.ranking_rate < b.ranking_rate) return 1;
+        return 0;
     })
     console.log({geral,players})
     return({players})
