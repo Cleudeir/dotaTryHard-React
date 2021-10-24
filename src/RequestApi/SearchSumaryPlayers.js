@@ -27,7 +27,7 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
             match: 0
         }  
         //Profile account
-        let profile = await fetch(`${proxy}${hostUrl}/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`)
+        let profile =await fetch(`${proxy}${hostUrl}/ISteamUser/GetPlayerSummaries/v0002/?key=${apiKey}&steamids=${steamId}`)
         .then((response)=>{return  response.json()})
         .then((data)=>{
             let x = data.response.players[0]
@@ -38,7 +38,8 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
                 return(players)
             }          
         })
-        .catch((e)=>{console.log(e.message);return false});  
+        .catch((e)=>{return false})
+        
         if(!profile){
             profile = {avatarfull:'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/a8/a881079e7abf4c621e86e21116f8c0dd3ee40619_full.jpg',
             personaname:'unknown',
@@ -52,12 +53,14 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
             }
             return (await result)
         }
+        
         //Match History
-        let Match_History = await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchHistory/v1?account_id=${accountid}&game_mode=${gameMode}&key=${apiKey}`)           
-        .then((response)=>{return  response.json()})
+        let Match_History = await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchHistory/v1?account_id=${accountid}&game_mode=${gameMode}&key=${apiKey}`)  
+        
+        .then(async(response)=>{return  await response.json()})
         .then((data)=>{
             console.log('search_History')
-            if(result.status==15){
+            if(data.status==15){
                 return false
             }
             
@@ -76,7 +79,8 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
             
             return(z)
         })
-        .catch((e)=>{console.log(e.message);return false});
+        .catch((e)=>{return false})       
+        
         if(!Match_History){
             obj.accountid = accountid
             let pre = Object.assign({}, obj, profile);
@@ -88,80 +92,75 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
         }
         //--
         //Wirate set
-        
-        for(let k=0;k<100;k++){
+        for( let k = 0;k<10;k++){
             if(Match_History[k] && Match_History[k].match_id){
-                let single_match = await fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchDetails/v1?match_id=${Match_History[k].match_id}&key=${apiKey}`)
-                .then((response)=>{return  response.json()})
-                .then((data)=>{
-                    console.log('search_Match')
-                    let {radiant_win,players} = data.result
-                    
-                    if(radiant_win<2 && players){                
-                        let y = players.filter(x => x.account_id === accountid)[0]
-                        
-                        let {assists,gold_per_min,xp_per_min,kills,deaths,last_hits,denies,hero_damage,hero_healing,net_worth,tower_damage} = y
-                        
-                        obj.media_assists += assists
-                        obj.media_gpm += gold_per_min
-                        obj.media_xpm += xp_per_min
-                        obj.media_kills += kills
-                        obj.media_deaths += -deaths
-                        obj.media_last_hists += last_hits
-                        obj.media_denies += denies
-                        obj.media_hero_damage += hero_damage
-                        obj.media_hero_healing += hero_healing
-                        obj.media_net_worth += net_worth
-                        obj.media_tower_damage += tower_damage
-                        obj.match += 1
-                        if(radiant_win){if(Match_History[k].player_slot<5){obj.win_rate+=1}}
-                        else{if(Match_History[k].player_slot>5){obj.win_rate+=1}}
-                        return true
+                const match = async(e)=>{   
+                    console.log(e)                 
+                    let s =  await  fetch(`${proxy}${hostUrl}/IDOTA2Match_570/GetMatchDetails/v1?match_id=${Match_History[e].match_id}&key=${apiKey}`)
+                    .then((response)=>{return  response.json()})
+                    .then((data)=>{
+                        console.log('search_Match')
+                        // console.log(data.result.radiant_win,data.result.players)
+                        if(data && data.result && data.result.radiant_win && data.result.players){                           
+                            return data.result    
+                        }
+                        else{return false}
+                    })
+                    .catch(()=>{return false})
+                    console.log(s)
+                    if(s && s!==undefined){                        
+                        return s
                     }
                     else{return false}
-                })
-                .catch((error)=>{console.log(error.message);return false}); 
-                if(!single_match){
-                    console.log('error')
                 }
-            }
+                let a = await match(k)
+                if(!a){ continue }
+                console.log({a})
+                
+                let {assists,gold_per_min,xp_per_min,kills,deaths,last_hits,denies,hero_damage,hero_healing,net_worth,tower_damage} = y
+                if(radiant_win && assists && gold_per_min && xp_per_min && kills && deaths && last_hits && denies && hero_damage && hero_healing && net_worth  && tower_damage) 
+                {
+                    obj.media_assists += assists
+                    obj.media_gpm += gold_per_min
+                    obj.media_xpm += xp_per_min
+                    obj.media_kills += kills
+                    obj.media_deaths += -deaths
+                    obj.media_last_hists += last_hits
+                    obj.media_denies += denies
+                    obj.media_hero_damage += hero_damage
+                    obj.media_hero_healing += hero_healing
+                    obj.media_net_worth += net_worth
+                    obj.media_tower_damage += tower_damage
+                    obj.match += 1
+                    if(radiant_win){if(Match_History[k].player_slot<5){obj.win_rate+=1}}
+                    else{if(Match_History[k].player_slot>5){obj.win_rate+=1}}
+                }  */   
+            }            
         }
-        
-        await Object.keys(obj).forEach((key) => {
-            if(key!== 'winrate' && key !== obj.ranking_rate && key !== obj.match){
-                if(key === 'media_assists'){
-                    obj.ranking_rate += obj[key]*5
-                }
-                else if(key === 'media_kills'){
-                    obj.ranking_rate += obj[key]
-                }
-                else if(key === 'media_deaths'){
-                    obj.ranking_rate += obj[key]*0.5 
-                }
-                else if(key === 'media_hero_damage'){
-                    obj.ranking_rate += obj[key]/10 
-                }
-                else if(key === 'media_net_worth'){
-                    obj.ranking_rate += obj[key]/10 
-                }
-                else if(key === 'media_net_worth'){
-                    obj.ranking_rate += obj[key]/10 
-                }
-                else{
-                    obj.ranking_rate += obj[key]
-                }                    
-            }
+        if(obj.match !==0){
+            obj.media_assists = (obj.media_assists/obj.match)
+            obj.media_gpm = (obj.media_gpm/obj.match)
+            obj.media_xpm = (obj.media_xpm/obj.match)
+            obj.media_kills = (obj.media_kills/obj.match)
+            obj.media_deaths = -(obj.media_deaths/obj.match)
+            obj.media_last_hists = (obj.media_last_hists/obj.match)
+            obj.media_denies = (obj.media_denies/obj.match)
+            obj.media_hero_damage = (obj.media_hero_damage/obj.match)
+            obj.media_hero_healing = (obj.media_hero_healing/obj.match)
+            obj.media_net_worth = (obj.media_net_worth/obj.match)
+            obj.media_tower_damage = (obj.media_tower_damage/obj.match)
             
-        });
-        obj.accountid = accountid
-        //--
-        //Resultado return
-        let pre_result = Object.assign({}, obj, profile);
-        result.push(pre_result)
-        if(value.length>1){
-            localStorage.setItem('result',JSON.stringify(result))
+            obj.accountid = accountid
+            //--
+            //Resultado return
+            let pre_result = Object.assign({}, obj, profile);
+            await result.push(pre_result)
+            if(value.length>1){
+                await localStorage.setItem('result',JSON.stringify(result))
+            }
         }
         //--
+        
     }
     for(let i= result.length; i<value.length;i++){
         console.log('start',i,':',value.length)
@@ -170,6 +169,6 @@ const SearchSumaryPlayer = async({value,apiKey,hostUrl,proxy,gameMode})=>{
         await search({accountid,steamId})
     } 
     console.log(result)
-    return(result)
+    return(await Promise.all(result))
 }
 export default SearchSumaryPlayer;

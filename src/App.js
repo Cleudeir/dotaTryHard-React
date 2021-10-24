@@ -24,16 +24,18 @@ const App =  ()=> {
         setDelay(true)
         console.log(value)
         let {players} = await RequestApi({value,apiKey,hostUrl,proxy,gameMode})
+        console.log(players)
         setDatePlayers(players)
-        let player = await SearchSumaryPlayer({value,apiKey,hostUrl,proxy,gameMode})
         setDelay(false)
+        /*let player = await SearchSumaryPlayer({value,apiKey,hostUrl,proxy,gameMode})
+        
         if(player.length !== 0){
           setDatePlayer(player[0])
         }
         else{
           setDatePlayer(player)
         }
-      
+      */
       }
     }
     useEffect(() => {
@@ -73,40 +75,40 @@ const App =  ()=> {
           <td>match</td><td>{Math.ceil(datePlayer.match)}</td>
           </tr>
           <tr>
-          <td>win_rate</td><td>{Math.ceil(datePlayer.win_rate/datePlayer.match*100)}% </td>
+          <td>win_rate</td><td>{Math.ceil(datePlayer.win_rate)}% </td>
           </tr>
           <tr>
-          <td>ranking_rate</td><td>{Math.ceil(datePlayer.ranking_rate/datePlayer.match)} </td>
+          <td>ranking_rate</td><td>{Math.ceil(datePlayer.ranking_rate)} </td>
           </tr>
           <tr>
-          <td>media_gpm</td><td>{Math.ceil(datePlayer.media_gpm/datePlayer.match)} </td>
+          <td>media_gpm</td><td>{Math.ceil(datePlayer.media_gpm)} </td>
           </tr>
           <tr>
-          <td>media_kills</td><td>{Math.ceil(datePlayer.media_kills/datePlayer.match)} </td>
+          <td>media_kills</td><td>{Math.ceil(datePlayer.media_kills)} </td>
           </tr>
           <tr>
-          <td>media_deaths</td><td>{Math.ceil(datePlayer.media_deaths/datePlayer.match)*-1} </td>
+          <td>media_deaths</td><td>{Math.ceil(datePlayer.media_deaths)*-1} </td>
           </tr>
           <tr>
-          <td>media_last_hists</td><td>{Math.ceil(datePlayer.media_last_hists/datePlayer.match)} </td>
+          <td>media_last_hists</td><td>{Math.ceil(datePlayer.media_last_hists)} </td>
           </tr>
           <tr>
-          <td>media_denies</td><td>{Math.ceil(datePlayer.media_denies/datePlayer.match)} </td>
+          <td>media_denies</td><td>{Math.ceil(datePlayer.media_denies)} </td>
           </tr>
           <tr>
-          <td>media_hero_damage</td><td>{Math.ceil(datePlayer.media_hero_damage/datePlayer.match)} </td>
+          <td>media_hero_damage</td><td>{Math.ceil(datePlayer.media_hero_damage)} </td>
           </tr>
           <tr>
-          <td>media_hero_healing</td><td>{Math.ceil(datePlayer.media_hero_healing/datePlayer.match)} </td>
+          <td>media_hero_healing</td><td>{Math.ceil(datePlayer.media_hero_healing)} </td>
           </tr>
           <tr>
-          <td>media_net_worth</td><td>{Math.ceil(datePlayer.media_net_worth/datePlayer.match)} </td>
+          <td>media_net_worth</td><td>{Math.ceil(datePlayer.media_net_worth)} </td>
           </tr>
           <tr>
-          <td>media_tower_damage</td><td>{Math.ceil(datePlayer.media_tower_damage/datePlayer.match)} </td>
+          <td>media_tower_damage</td><td>{Math.ceil(datePlayer.media_tower_damage)} </td>
           </tr>
           <tr>
-          <td>media_assists</td><td>{Math.ceil(datePlayer.media_assists/datePlayer.match)} </td>
+          <td>media_assists</td><td>{Math.ceil(datePlayer.media_assists)} </td>
           </tr>
           </tbody>
         }
@@ -140,7 +142,7 @@ const App =  ()=> {
           return(
             x.ranking_rate>0 &&
             <tr key={key}>
-            <td>{key}</td><td>{x.accountid}</td> <td><img src={x.avatarfull} width="35" alt={x.personaname}/></td><td>{x.personaname}</td><td>{Math.ceil(x.ranking_rate/x.match)}</td><td>{Math.ceil(x.win_rate/x.match*100)}%</td>
+            <td>{key}</td><td>{x.accountid}</td> <td><img src={x.avatarfull} width="35" alt={x.personaname}/></td><td>{x.personaname}</td><td>{Math.ceil(x.ranking_rate)}</td><td>{Math.ceil(x.win_rate)}%</td>
             </tr>)
           })}
           </tbody>
